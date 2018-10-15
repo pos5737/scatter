@@ -28,19 +28,4 @@ df <- df_raw  %>%
          year = as.numeric(year)) %>%
   glimpse()
 
-
-# tidy more efficiently
-df <- df_raw  %>%
-  gather(Year, value, `2000 [YR2000]`:`2015 [YR2015]`) %>%
-  mutate(Year = str_sub(Year, end = 4)) %>%
-  select(`Series Name`, `Country Name`, `Year`, `value`) %>% 
-  filter(`Series Name` == "Population, total") %>%
-  rename(country = `Country Name`, 
-         year = Year,
-         population = value) %>%
-  select(-`Series Name`) %>%
-  mutate(population = as.numeric(population),
-         year = as.numeric(year)) %>%
-  glimpse()
-
   
